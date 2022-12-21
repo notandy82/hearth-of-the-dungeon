@@ -41,7 +41,7 @@ const NavBar = () => {
         activeClassName={styles.Active}
         to="/parties/create"
       >
-        <i className="fas fa-stream"></i>Feed
+        <i className="fas fa-users"></i>My Parties
       </NavLink>
       <NavLink className={styles.NavLink} to="/" onClick={handleSignOut}>
         <i className="fas fa-sign-out-alt"></i>Sign out
