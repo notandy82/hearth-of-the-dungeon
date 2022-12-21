@@ -16,7 +16,9 @@ const Profile = (props) => {
             Avatar
         </Link>
       </div>
-      <div className={``}></div>
+      <div className={`mx-2 ${styles.WordBreak}`}>
+        <strong>{owner}</strong>
+      </div>
     </div>
   )
 }
