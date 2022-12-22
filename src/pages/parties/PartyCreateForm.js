@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Container from "react-bootstrap/Container";
 import Upload from "../../assets/Upload.png";
+import Image from "react-bootstrap/Image";
 
 import styles from "../../styles/PartyCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
@@ -23,13 +24,21 @@ function PartyCreateForm() {
   });
   const { title, location, description, image } = partyData;
 
-  const imageInput = useRef(null);
-
-  const handleChange = (event) => {
+  const handleChange = (event) => {  
     setPartyData({
       ...partyData,
       [event.target.name]: event.target.value,
     });
+  };
+
+  const handleChangeImage = (event) => {
+    if (event.target.files.length) {
+      URL.revokeObjectURL(image);
+      setPartyData({
+        ...partyData,
+        image: URL.createObjectURL(event.target.files[0]),
+      });
+    }
   };
 
   
@@ -63,21 +72,18 @@ function PartyCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
-
-
-
-      <button
+      <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => {}}
       >
         cancel
-      </button>
-      <button
+      </Button>
+      <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         type="submit"
       >
         create
-      </button>
+      </Button>
     </div>
   );
 
@@ -89,22 +95,38 @@ function PartyCreateForm() {
             className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
           >
             <Form.Group className="text-center">
-              
-              <Form.Label
-                className="d-flex justify-content-center"
-                htmlFor="image-upload"
-              >
+              {image ? (
+                <>
+                  <figure>
+                    <Image className={appStyles.Image} src={image} rounded />
+                  </figure>
+                  <div>
+                    <Form.Label
+                      className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
+                      htmlFor="image-upload"
+                    >
+                      Select a new image 
+                    </Form.Label>
+                  </div>
+                </>
+              ) : (
+                <Form.Label
+                  className="d-flex justify-content-center"
+                  htmlFor="image-upload"
+                >
                 <Asset src={Upload} message="Click to upload an image" />
               </Form.Label>
-
+              )}
+              
+              <Form.File
+                id="image-upload"
+                accept="image/*"
+                onChange={handleChangeImage}                
+              />
             </Form.Group>
-            {textFields}
-            {/* <div className="d-md-none">{textFields}</div> */}
+            {textFields}            
           </Container>
-        </Col>
-        {/* <Col md={5} lg={4} className="d-none d-md-block p-0 p-md-2">
-          <Container className={appStyles.Content}>{textFields}</Container>
-        </Col> */}
+        </Col>        
       </Row>
     </Form>
   );
