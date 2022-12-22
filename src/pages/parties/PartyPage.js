@@ -7,6 +7,7 @@ import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
+import Party from "./Party";
 
 function PostPage() {
   const { id } = useParams();
@@ -15,7 +16,7 @@ function PostPage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{data: post}] = await Promise.all([
+        const [{data: party}] = await Promise.all([
           axiosReq.get(`/parties/${id}`),
         //   axiosReq.get(`/posts/?party=${id}`),
         //   axiosReq.get(`/comments/?post=${id}`),
@@ -34,14 +35,17 @@ function PostPage() {
   return (
     <Row className="h-100">
       <Col className="py-2 p-0 p-lg-2" lg={8}>
-        <p>Popular parties for mobile</p>
-        <p>Party component</p>
+        
+        <Party {...party.results[0]} setParties={setParty} />
         <Container className={appStyles.Content}>
-          Comments
+          posts
+          <Container className={appStyles.Content}>
+            comments
+          </Container>
         </Container>
       </Col>
       <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Popular parties for desktop
+        Most followed parties
       </Col>
     </Row>
   );
