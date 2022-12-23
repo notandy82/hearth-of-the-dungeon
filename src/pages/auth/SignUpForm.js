@@ -51,10 +51,12 @@ const SignUpForm = () => {
         md={6}
         className={`my-auto d-none d-md-block p-2 ${styles.SignUpCol}`}
       >
-        {/* <Image
+        <Image
           className={`${appStyles.FillerImage}`}
-          src={"https://codeinstitute.s3.amazonaws.com/AdvancedReact/hero2.jpg"}
-        /> */}
+          src={"https://res.cloudinary.com/dqqpbdz1w/image/upload/v1671772798/Fireplace_b7rn3s.jpg"}
+          alt="Fireplace image by Photo by Stéphane Juban on unsplash
+          "
+        />
       </Col>
       <Col className="my-auto py-2 p-md-2" md={6}>
         <Container className={`${appStyles.Content} p-4 `}>
