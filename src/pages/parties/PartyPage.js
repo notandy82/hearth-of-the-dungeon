@@ -31,11 +31,39 @@ function PostPage() {
     handleMount()
   }, [id]);
 
+  const popularParties = (
+    <Container className={appStyles.Content}>
+        Most followed parties
+        </Container>
+  )
+
+  const imagePosts = (
+    <Container className={appStyles.Content}>
+      gallery of images from posts
+    </Container>
+  )
+
+  const groupMembers = (
+    <Container className={appStyles.Content}>
+      Party members
+    </Container>
+  )
+
+  const calendar = (
+    <Container className={appStyles.Content}>
+      Upcoming events
+    </Container>
+  )
+
 
   return (
     <Row className="h-100">
-      <Col className="py-2 p-0 p-lg-2" lg={8}>
-        
+      <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
+        {groupMembers}
+        {calendar}
+      </Col>
+      <Col className="py-2 p-0 p-lg-2" lg={6}>
+      {groupMembers}
         <Party {...party.results[0]} setParties={setParty} />
         <Container className={appStyles.Content}>
           posts
@@ -44,9 +72,11 @@ function PostPage() {
           </Container>
         </Container>
       </Col>
-      <Col lg={4} className="d-none d-lg-block p-0 p-lg-2">
-        Most followed parties
+      <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
+        {popularParties}
+        {imagePosts}
       </Col>
+      
     </Row>
   );
 }
