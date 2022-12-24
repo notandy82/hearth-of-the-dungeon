@@ -6,7 +6,7 @@ import { useCurrentUser } from "../../contexts/CurrentUserContext";
 const Party = (props) => {
   const {
     owner,
-    party_id,
+    id,
     party_image,
     posts_count,
     title,

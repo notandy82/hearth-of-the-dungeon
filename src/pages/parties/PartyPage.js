@@ -12,30 +12,7 @@ import { Image } from "react-bootstrap";
 import { usePartyData, useSetPartyData } from "../../contexts/PartyDataContext";
 
 function PostPage() {
-  const [hasLoaded, setHasLoaded] = useState(false);
-  const { id } = useParams();
-  const setPartyData = useSetPartyData();
-  const {pageParty} = usePartyData();
-  const [party] = pageParty.results;
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const [{data: pageParty}] = await Promise.all([
-          axiosReq.get(`/parties/${id}/`)
-        ])
-        setPartyData(prevState => ({
-          ...prevState,
-          pageParty: {results: [pageParty]}
-        }))
-        setHasLoaded(true);
-      } catch (err) {
-        console.log(err)
-      }
-    }
-
-    fetchData()
-  }, [id, setPartyData]);
+  
 
   
 
@@ -53,7 +30,7 @@ function PostPage() {
 
   const groupName = (
     <Container className={appStyles.Content}>
-      <h2>{party.title}</h2>
+      <h2>Party title</h2>
     </Container>
   )
 
@@ -65,7 +42,7 @@ function PostPage() {
 
   const partyImage = (
     <Container className={appStyles.Content}>
-      <Image src={party?.image} />
+      Party image
     </Container>
   )
 
@@ -88,7 +65,7 @@ function PostPage() {
         </Container>
       </Col>
       <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
-        {popularParties}
+        
         {imagePosts}
       </Col>
     </Row>
