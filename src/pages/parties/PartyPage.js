@@ -8,24 +8,22 @@ import appStyles from "../../App.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Party from "./Party";
+import { Image } from "react-bootstrap";
 
 function PostPage() {
   const { id } = useParams();
   const [party, setParty] = useState({ results: [] });
 
   useEffect(() => {
-    const handleMount = async () => {
+    const fetchData = async () => {
       try {
-        const [{data: party}] = await Promise.all([
-          axiosReq.get(`/parties/${id}`),
-        //   axiosReq.get(`/posts/?party=${id}`),
-        //   axiosReq.get(`/comments/?post=${id}`),
+        const [{data: pageParty}] = await Promise.all([
+          axiosReq.get(`/parties/${id}/`)
         ])
-        setParty({results: [party]})
-        console.log(party)
-      } catch(err){
-        console.log(err)
+      } catch (err) {
+        
       }
+    }
     }
 
     handleMount()
@@ -49,9 +47,21 @@ function PostPage() {
     </Container>
   )
 
+  const groupName = (
+    <Container className={appStyles.Content}>
+      <h2>{party?.title}</h2>
+    </Container>
+  )
+
   const calendar = (
     <Container className={appStyles.Content}>
       Upcoming events
+    </Container>
+  )
+
+  const partyImage = (
+    <Container className={appStyles.Content}>
+      <Image src={party?.image} />
     </Container>
   )
 
@@ -59,11 +69,12 @@ function PostPage() {
   return (
     <Row className="h-100">
       <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
+        {partyImage}
         {groupMembers}
         {calendar}
       </Col>
       <Col className="py-2 p-0 p-lg-2" lg={6}>
-      {groupMembers}
+      {groupName}
         <Party {...party.results[0]} setParties={setParty} />
         <Container className={appStyles.Content}>
           posts

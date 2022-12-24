@@ -18,7 +18,6 @@ import { Alert } from "bootstrap";
 
 function PartyCreateForm() {
  
-  
   const [errors, setErrors] =useState({});
 
   const [partyData, setPartyData] =useState({
