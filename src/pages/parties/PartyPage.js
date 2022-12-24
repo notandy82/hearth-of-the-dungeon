@@ -88,10 +88,9 @@ function PostPage() {
         </Container>
       </Col>
       <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
-        
+        {popularParties}
         {imagePosts}
       </Col>
-      
     </Row>
   );
 }
