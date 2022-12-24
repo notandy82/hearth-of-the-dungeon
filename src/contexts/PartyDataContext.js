@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { axiosReq, axiosRes } from "../api/axiosDefaults";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
-import { followHelper, unfollowHelper } from "../utils/utils";
+
 
 const PartyDataContext = createContext();
 const SetPartyDataContext = createContext();
@@ -24,20 +24,7 @@ export const PartyDataProvider = ({ children }) => {
         followed: clickedParty.id,
       });
 
-      setPartyData((prevState) => ({
-        ...prevState,
-        pageParty: {
-          results: prevState.pageParty.results.map((party) =>
-            followHelper(profile, clickedParty, data.id)
-          ),
-        },
-        popularParties: {
-          ...prevState.popularParties,
-          results: prevState.popularProfiles.results.map((profile) =>
-            followHelper(profile, clickedParty, data.id)
-          ),
-        },
-      }));
+      
     } catch (err) {
       // console.log(err);
     }
@@ -46,21 +33,7 @@ export const PartyDataProvider = ({ children }) => {
   const handleUnfollow = async (clickedParty) => {
     try {
       await axiosRes.delete(`/followers/${clickedParty.following_id}/`);
-
-      setProfileData((prevState) => ({
-        ...prevState,
-        pageProfile: {
-          results: prevState.pageParty.results.map((profile) =>
-            unfollowHelper(party, clickedParty)
-          ),
-        },
-        popularParties: {
-          ...prevState.popularParties,
-          results: prevState.popularParties.results.map((profile) =>
-            unfollowHelper(profile, clickedParty)
-          ),
-        },
-      }));
+      
     } catch (err) {
       // console.log(err);
     }
@@ -85,7 +58,7 @@ export const PartyDataProvider = ({ children }) => {
   }, [currentUser]);
 
   return (
-    <PartyDataContext.Provider value={profileData}>
+    <PartyDataContext.Provider value={partyData}>
       <SetPartyDataContext.Provider
         value={{ setPartyData, handleFollow, handleUnfollow }}
       >

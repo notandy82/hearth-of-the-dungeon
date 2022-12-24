@@ -9,10 +9,14 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Party from "./Party";
 import { Image } from "react-bootstrap";
+import { usePartyData, useSetPartyData } from "../../contexts/PartyDataContext";
 
 function PostPage() {
+  const [hasLoaded, setHasLoaded] = useState(false);
   const { id } = useParams();
-  const [party, setParty] = useState({ results: [] });
+  const setPartyData = useSetPartyData();
+  const {pageParty} = usePartyData();
+  const [party] = pageParty.results;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,20 +24,20 @@ function PostPage() {
         const [{data: pageParty}] = await Promise.all([
           axiosReq.get(`/parties/${id}/`)
         ])
+        setPartyData(prevState => ({
+          ...prevState,
+          pageParty: {results: [pageParty]}
+        }))
+        setHasLoaded(true);
       } catch (err) {
-        
+        console.log(err)
       }
     }
-    }
 
-    handleMount()
-  }, [id]);
+    fetchData()
+  }, [id, setPartyData]);
 
-  const popularParties = (
-    <Container className={appStyles.Content}>
-        Most followed parties
-        </Container>
-  )
+  
 
   const imagePosts = (
     <Container className={appStyles.Content}>
@@ -49,7 +53,7 @@ function PostPage() {
 
   const groupName = (
     <Container className={appStyles.Content}>
-      <h2>{party?.title}</h2>
+      <h2>{party.title}</h2>
     </Container>
   )
 
@@ -75,7 +79,7 @@ function PostPage() {
       </Col>
       <Col className="py-2 p-0 p-lg-2" lg={6}>
       {groupName}
-        <Party {...party.results[0]} setParties={setParty} />
+        
         <Container className={appStyles.Content}>
           posts
           <Container className={appStyles.Content}>
@@ -84,7 +88,7 @@ function PostPage() {
         </Container>
       </Col>
       <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
-        {popularParties}
+        
         {imagePosts}
       </Col>
       
