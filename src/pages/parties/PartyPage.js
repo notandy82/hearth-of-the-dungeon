@@ -9,7 +9,6 @@ import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 import Party from "./Party";
 import { Image } from "react-bootstrap";
-import { usePartyData, useSetPartyData } from "../../contexts/PartyDataContext";
 
 function PostPage() {
   
