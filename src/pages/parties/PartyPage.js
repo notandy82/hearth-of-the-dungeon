@@ -7,11 +7,30 @@ import Container from "react-bootstrap/Container";
 import appStyles from "../../App.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
-import Party from "./Party";
+
 import { Image } from "react-bootstrap";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function PostPage() {
-  
+  const { id } = useParams();
+  const [party, setParty] = useState({ results: [] });
+
+  useEffect(() => {
+    const handleMount = async () => {
+      try {
+        const [{ data: party }] = await Promise.all([
+          axiosReq.get(`/parties/${id}`),
+        ]);
+        setParty({ results: [party] });
+        console.log(party);
+      } catch(err) {
+        console.log(err);
+      }
+    };
+
+    handleMount();
+  }, [id]);
+
 
   
 
