@@ -10,10 +10,12 @@ import { axiosReq } from "../../api/axiosDefaults";
 
 import { Image } from "react-bootstrap";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Party from "./Party";
 
 function PostPage() {
   const { id } = useParams();
   const [party, setParty] = useState({ results: [] });
+  const currentUser = useCurrentUser();
 
   useEffect(() => {
     const handleMount = async () => {
@@ -34,59 +36,32 @@ function PostPage() {
 
   
 
-  const imagePosts = (
-    <Container className={appStyles.Content}>
-      gallery of images from posts
-    </Container>
-  )
 
-  const groupMembers = (
-    <Container className={appStyles.Content}>
-      Party members
-    </Container>
-  )
-
-  const groupName = (
-    <Container className={appStyles.Content}>
-      <h2>Party title</h2>
-    </Container>
-  )
-
-  const calendar = (
-    <Container className={appStyles.Content}>
-      Upcoming events
-    </Container>
-  )
-
-  const partyImage = (
-    <Container className={appStyles.Content}>
-      Party image
-    </Container>
-  )
 
 
   return (
-    <Row className="h-100">
+    <Container className={appStyles.Content}>
+      <Party {...party.results[0]} setParties={setParty} />
+      <Row className="h-100">
+      
       <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
-        {partyImage}
-        {groupMembers}
-        {calendar}
-      </Col>
-      <Col className="py-2 p-0 p-lg-2" lg={6}>
-      {groupName}
         
+      </Col>
+      <Col className="py-2 p-0 p-lg-2" lg={6}>          
         <Container className={appStyles.Content}>
-          posts
+        posts
           <Container className={appStyles.Content}>
-            comments
+          comments
           </Container>
         </Container>
       </Col>
       <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
         
-        {imagePosts}
+        
       </Col>
     </Row>
+    </Container>
+    
   );
 }
 
