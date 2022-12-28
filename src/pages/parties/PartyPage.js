@@ -11,11 +11,19 @@ import { axiosReq } from "../../api/axiosDefaults";
 import { Image } from "react-bootstrap";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Party from "./Party";
+import { NavLink } from "react-router-dom";
 
 function PostPage() {
   const { id } = useParams();
   const [party, setParty] = useState({ results: [] });
   const currentUser = useCurrentUser();
+  const addPostIcon = (
+    <NavLink            
+      to="/posts/create"
+    >
+      <i className="far fa-plus-square"></i>New Post
+    </NavLink>
+  )
 
   useEffect(() => {
     const handleMount = async () => {
@@ -53,7 +61,9 @@ function PostPage() {
           <Container className={appStyles.Content}>
           comments
           </Container>
+          {addPostIcon}
         </Container>
+        
       </Col>
       <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
         
