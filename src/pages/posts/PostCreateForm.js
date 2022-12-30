@@ -12,10 +12,9 @@ import styles from "../../styles/PostCreateEditForm.module.css";
 import appStyles from "../../App.module.css";
 import btnStyles from "../../styles/Button.module.css";
 import Asset from "../../components/Asset";
-import { Alert, Image } from "react-bootstrap";
+import { Image } from "react-bootstrap";
 
 function PostCreateForm() {
-
   const [errors, setErrors] = useState({});
 
   const [postData, setPostData] = useState({
@@ -33,15 +32,14 @@ function PostCreateForm() {
   };
 
   const handleChangeImage = (event) => {
-    if (event.target.files.length){
+    if (event.target.files.length) {
       URL.revokeObjectURL(image);
       setPostData({
         ...postData,
         image: URL.createObjectURL(event.target.files[0]),
       });
     }
-  }
-
+  };
 
   const textFields = (
     <div className="text-center">
@@ -54,27 +52,17 @@ function PostCreateForm() {
           onChange={handleChange}
         />
       </Form.Group>
-      {errors?.title?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
       <Form.Group>
         <Form.Label>Content</Form.Label>
         <Form.Control
-          type="textarea"
+          as="textarea"
+          rows={6}
           name="content"
           value={content}
           onChange={handleChange}
         />
       </Form.Group>
-      {errors?.content?.map((message, idx) => (
-        <Alert variant="warning" key={idx}>
-          {message}
-        </Alert>
-      ))}
-    
-    
+
       <Button
         className={`${btnStyles.Button} ${btnStyles.Blue}`}
         onClick={() => {}}
@@ -105,7 +93,7 @@ function PostCreateForm() {
                       className={`${btnStyles.Button} ${btnStyles.Blue} btn`}
                       htmlFor="image-upload"
                     >
-                     Change the image 
+                      Change the image
                     </Form.Label>
                   </div>
                 </>
@@ -114,10 +102,12 @@ function PostCreateForm() {
                   className="d-flex justify-content-center"
                   htmlFor="image-upload"
                 >
-                  <Asset src={Upload} message="Click or tap to upload an image" />
+                  <Asset
+                    src={Upload}
+                    message="Click or tap to upload an image"
+                  />
                 </Form.Label>
-              )}         
-              
+              )}
               <Form.File
                 id="image-upload"
                 accept="image/*"
