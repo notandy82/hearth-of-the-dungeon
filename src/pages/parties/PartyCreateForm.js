@@ -28,8 +28,8 @@ function PartyCreateForm() {
   });
   const { title, location, description, image } = partyData;
 
-  const imageInput = useRef(null)
-  const history = useHistory()
+  const imageInput = useRef(null);
+  const history = useHistory();
 
   const handleChange = (event) => {  
     setPartyData({
