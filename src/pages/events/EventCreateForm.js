@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Form } from 'react-bootstrap';
+import TableDatePicker from '../../components/DatePicker';
 
 function EventCreateForm() {
   const [eventData, setEventData] = useState({
@@ -16,6 +17,7 @@ function EventCreateForm() {
         <Form.Control
           type="text"
           name="title"
+          value={title}
         />
       </Form.Group>
       <Form.Group>
@@ -24,14 +26,23 @@ function EventCreateForm() {
           as="textarea"
           rows={5}
           name="About"
+          value={about}
         />
+      </Form.Group>
+      <Form.Group>
+        <Form.Label>Select a date and time</Form.Label>
+        <TableDatePicker
+          value={when} />
+        
       </Form.Group>
     </div>
   );
 
 
   return (
-    <div>{textFields}</div>
+    <div>
+      {textFields}
+    </div>
   )
 }
 

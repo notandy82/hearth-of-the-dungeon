@@ -24,7 +24,7 @@ function App() {
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/parties/create" render={() => <PartyCreateForm />} />
           <Route exact path="/parties/:id" render={() => <PartyPage />} />
-          <Route exact path="/posts/create" render={() => <PostCreateForm />} />
+          <Route exact path="/parties/:id/newpost" render={() => <PostCreateForm />} />
           <Route exact path="/parties/:id/newevent" render={() => <EventCreateForm />} />
           <Route render={() => <p>Page not found!</p>} />
         </Switch>

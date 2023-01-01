@@ -7,8 +7,10 @@ export default function TableDatePicker() {
     const [date, setDate] = useState(new Date());
 
     return (
-        <DatePicker 
+        <DatePicker
+          placeholderText="Select date and time"
           showTimeSelect
+          dateFormat="d MMMM yyyy h:mmaa"
           selected={date}
           onChange={date => setDate(date)}
         />
