@@ -72,7 +72,7 @@ function PartyCreateForm() {
   const textFields = (
     <div className="text-center">
       <Form.Group>
-        <Form.Label> Title</Form.Label>
+        <Form.Label>Title</Form.Label>
         <Form.Control
           type="text"
           name="title"
