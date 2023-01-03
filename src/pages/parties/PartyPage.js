@@ -8,22 +8,16 @@ import appStyles from "../../App.module.css";
 import { useParams } from "react-router";
 import { axiosReq } from "../../api/axiosDefaults";
 
-import { Image } from "react-bootstrap";
-import { useCurrentUser } from "../../contexts/CurrentUserContext";
-import Party from "./Party";
-import { NavLink } from "react-router-dom";
 
-function PostPage() {
+import Party from "./Party";
+import PostCreateForm from "../posts/PostCreateForm";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+
+function PartyPage() {
   const { id } = useParams();
   const [party, setParty] = useState({ results: [] });
-  const currentUser = useCurrentUser();
-  const addPostIcon = (
-    <NavLink            
-      to="/posts/create"
-    >
-      <i className="far fa-plus-square"></i>New Post
-    </NavLink>
-  )
+  
+  
 
   useEffect(() => {
     const handleMount = async () => {
@@ -55,13 +49,18 @@ function PostPage() {
       <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
         
       </Col>
-      <Col className="py-2 p-0 p-lg-2" lg={6}>          
+      <Col className="py-2 p-0 p-lg-2" lg={6}>
+      <PostCreateForm
+          profile_id={CurrentUserContext.profile_id}
+         
+          party={id} />
         <Container className={appStyles.Content}>
         posts
+        
           <Container className={appStyles.Content}>
           comments
           </Container>
-          {addPostIcon}
+                    
         </Container>
         
       </Col>
@@ -75,4 +74,4 @@ function PostPage() {
   );
 }
 
-export default PostPage;
+export default PartyPage;
