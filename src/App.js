@@ -7,9 +7,6 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import PartyCreateForm from "./pages/parties/PartyCreateForm";
 import PartyPage from "./pages/parties/PartyPage";
-import PostCreateForm from "./pages/posts/PostCreateForm";
-import EventCreateForm from "./pages/events/EventCreateForm";
-
 
 
 function App() {

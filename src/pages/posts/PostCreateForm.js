@@ -1,18 +1,25 @@
-import React, { Component } from 'react'
+import React, { useState } from "react";
+import { Container } from "react-bootstrap";
+import styles from "../../styles/PostCreateEditForm.module.css";
+import appStyles from "../../App.module.css";
 
-export class PostCreateForm extends Component {
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-       
-    }
-  }
-  render() {
-    return (
-      <div>PostCreateForm</div>
-    )
-  }
+function PostCreateForm(props) {
+  const { party } = props;
+
+  const [postData, setPostData] =useState({
+    party: {party},
+    title: "",
+    content: "",
+    image: "",
+  });
+  const { title, content, image } = postData;
+  return (
+  <Container
+    className={`${appStyles.Content} ${styles.Container} d-flex flex-column justify-content-center`}
+  >
+
+  </Container>
+  )
 }
 
-export default PostCreateForm
+export default PostCreateForm;
