@@ -51,9 +51,9 @@ function PartyPage() {
       </Col>
       <Col className="py-2 p-0 p-lg-2" lg={6}>
       <PostCreateForm
-          profile_id={CurrentUserContext.profile_id}
-         
-          party={id} />
+          profile_id={CurrentUserContext.profile_id}         
+          party={id}
+        />
         <Container className={appStyles.Content}>
         posts
         

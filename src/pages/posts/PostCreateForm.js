@@ -49,6 +49,7 @@ function PostCreateForm(props) {
     formData.append('title', title)
     formData.append('content', content)
     formData.append('image', imageInput.current.files[0])
+    formData.append('party', party)
 
     try {
       const {data} = await axiosReq.post('/posts/', formData);
@@ -91,6 +92,15 @@ function PostCreateForm(props) {
           {message}
         </Alert>
       ))}
+      {/* <Form.Group>
+        <Form.Label>Party</Form.Label>
+        <Form.Control
+          type="text"
+          placeholder={party}
+          readOnly
+          value={party}
+        />
+      </Form.Group> */}
       <div className="d-flex justify-content-center">
         <Button
           className={`${btnStyles.Button}`}
