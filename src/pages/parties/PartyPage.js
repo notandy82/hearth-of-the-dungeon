@@ -13,6 +13,7 @@ import Party from "./Party";
 import PostCreateForm from "../posts/PostCreateForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
+import Post from "../posts/Post";
 
 function PartyPage() {
   const { id } = useParams();
@@ -65,7 +66,7 @@ function PartyPage() {
           "Posts"
         ) : null}
         <Container className={appStyles.Content}>
-        posts
+        <Post />
         
           <Container className={appStyles.Content}>
           comments
