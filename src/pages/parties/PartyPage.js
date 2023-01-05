@@ -12,21 +12,26 @@ import { axiosReq } from "../../api/axiosDefaults";
 import Party from "./Party";
 import PostCreateForm from "../posts/PostCreateForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 function PartyPage() {
   const { id } = useParams();
   const [party, setParty] = useState({ results: [] });
+  const [posts, setPosts] = useState({ results: [] });
+  const currentUser = useCurrentUser();
   
   
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: party }] = await Promise.all([
+        const [{ data: party }, {data: posts}] = await Promise.all([
           axiosReq.get(`/parties/${id}`),
+          axiosReq.get(`/posts/?parties=${id}`)
         ]);
         setParty({ results: [party] });
-        console.log(party);
+        setPosts(posts);
+        console.log(posts)
       } catch(err) {
         console.log(err);
       }
@@ -50,10 +55,15 @@ function PartyPage() {
         
       </Col>
       <Col className="py-2 p-0 p-lg-2" lg={6}>
-      <PostCreateForm
+      {currentUser ? (
+        <PostCreateForm
           profile_id={CurrentUserContext.profile_id}         
           party={id}
+          setPosts={setPosts}
         />
+        ) : posts.results.length ? (
+          "Posts"
+        ) : null}
         <Container className={appStyles.Content}>
         posts
         
