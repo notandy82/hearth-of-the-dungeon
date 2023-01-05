@@ -66,7 +66,7 @@ function PartyPage() {
           "Posts"
         ) : null}
         <Container className={appStyles.Content}>
-        <Post />
+          <Post />
         
           <Container className={appStyles.Content}>
           comments
