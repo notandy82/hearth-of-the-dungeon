@@ -20,15 +20,16 @@ function PartyPage() {
   const [party, setParty] = useState({ results: [] });
   const [post, setPost] = useState({ results: [] });
   const currentUser = useCurrentUser();
+  const [partyPosts, setPartyPosts] = useState({ results: [] });
   
   
 
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: party }, {data: post}] = await Promise.all([
+        const [{ data: party }, {data: partyPosts}] = await Promise.all([
           axiosReq.get(`/parties/${id}`),
-          axiosReq.get(`posts/?parties=${id}`),
+          axiosReq.get(`/posts/?parties=${id}`),
         ]);
         setParty({ results: [party] });
         setPost({ results: [post] });
@@ -37,11 +38,11 @@ function PartyPage() {
         console.log(err);
       }
     };
-
+    
     handleMount();
   }, [id]);
 
-
+  
   
 
 
@@ -65,22 +66,14 @@ function PartyPage() {
         ) : post.results.length ? (
           "Posts"
         ) : null}
-        <Container className={appStyles.Content}>
-          <Post {...post.results[0]} setPosts={setPost} partyPage />
-        
-          <Container className={appStyles.Content}>
-          comments
-          </Container>
-                    
-        </Container>
-        
-      </Col>
-      <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
         
         
       </Col>
+      
     </Row>
+    
     </Container>
+    
     
   );
 }
