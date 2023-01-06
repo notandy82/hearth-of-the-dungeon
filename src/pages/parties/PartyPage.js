@@ -18,7 +18,7 @@ import Post from "../posts/Post";
 function PartyPage() {
   const { id } = useParams();
   const [party, setParty] = useState({ results: [] });
-  const [post, setPost] = useState({ results: [] });
+  
   const currentUser = useCurrentUser();
   const [partyPosts, setPartyPosts] = useState({ results: [] });
   
@@ -32,8 +32,8 @@ function PartyPage() {
           axiosReq.get(`/posts/?parties=${id}`),
         ]);
         setParty({ results: [party] });
-        setPost({ results: [post] });
-        console.log(post)
+        
+        
       } catch(err) {
         console.log(err);
       }
@@ -56,19 +56,7 @@ function PartyPage() {
       <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
         
       </Col>
-      <Col className="py-2 p-0 p-lg-2" lg={6}>
-      {currentUser ? (
-        <PostCreateForm
-          profile_id={CurrentUserContext.profile_id}         
-          party={id}
-          setPost={setPost}
-        />
-        ) : post.results.length ? (
-          "Posts"
-        ) : null}
-        
-        
-      </Col>
+      
       
     </Row>
     
