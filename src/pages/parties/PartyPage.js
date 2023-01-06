@@ -18,7 +18,7 @@ import Post from "../posts/Post";
 function PartyPage() {
   const { id } = useParams();
   const [party, setParty] = useState({ results: [] });
-  const [posts, setPosts] = useState({ results: [] });
+  const [post, setPost] = useState({ results: [] });
   const currentUser = useCurrentUser();
   
   
@@ -26,13 +26,13 @@ function PartyPage() {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: party }, {data: posts}] = await Promise.all([
+        const [{ data: party }, {data: post}] = await Promise.all([
           axiosReq.get(`/parties/${id}`),
-          axiosReq.get(`/posts/?parties=${id}`)
+          axiosReq.get(`posts/?parties=${id}`),
         ]);
         setParty({ results: [party] });
-        setPosts(posts);
-        console.log(posts)
+        setPost({ results: [post] });
+        console.log(post)
       } catch(err) {
         console.log(err);
       }
@@ -60,13 +60,13 @@ function PartyPage() {
         <PostCreateForm
           profile_id={CurrentUserContext.profile_id}         
           party={id}
-          setPosts={setPosts}
+          setPost={setPost}
         />
-        ) : posts.results.length ? (
+        ) : post.results.length ? (
           "Posts"
         ) : null}
         <Container className={appStyles.Content}>
-          <Post />
+          <Post {...post.results[0]} setPosts={setPost} partyPage />
         
           <Container className={appStyles.Content}>
           comments
