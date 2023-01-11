@@ -95,12 +95,15 @@ Live demo [_here_](https://notandy82-hearth-api.herokuapp.com/)
 
 ## Development
 - User stories were established to determine the direction of development.
-
-![User stories planning board](assets/hearth_user_stories.png)
+![User stories planning board](src/assets/hearth_user_stories.png)
 
 - The site was planned using Balsamiq wireframes.
   - Homepage view
-![Wireframe of homepage](assets/hearth_wireframe_1.png)
+![Wireframe of homepage](src/assets/hearth_wireframe_1.png)
+  - Party page view
+![Wireframe of party page](src/assets/hearth_wireframe_2.png)
+  - Log in/Sign up view
+![Wireframe of login and signup page](src/assets/hearth_wireframe_3.png)
 
 
 ## Testing
