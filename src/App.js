@@ -7,6 +7,7 @@ import SignUpForm from "./pages/auth/SignUpForm";
 import SignInForm from "./pages/auth/SignInForm";
 import PartyCreateForm from "./pages/parties/PartyCreateForm";
 import PartyPage from "./pages/parties/PartyPage";
+import NotFound from "./components/NotFound";
 
 
 function App() {
@@ -21,7 +22,7 @@ function App() {
           <Route exact path="/signup" render={() => <SignUpForm />} />
           <Route exact path="/parties/create" render={() => <PartyCreateForm />} />
           <Route exact path="/parties/:id" render={() => <PartyPage />} />
-          <Route render={() => <p>Page not found!</p>} />
+          <Route render={() => <NotFound />} />
         </Switch>
       </Container>
     </div>    
