@@ -30,10 +30,8 @@ function PartyPage() {
         ]);
         setParty({ results: [party] });
         setPartyPosts({ results: [partyPosts] });
-        
-        console.log(partyPosts);
       } catch(err) {
-        console.log(err);
+        // console.log(err);
       }
     };
     
