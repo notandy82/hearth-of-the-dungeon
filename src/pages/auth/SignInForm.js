@@ -58,7 +58,7 @@ function SignInForm() {
         <Image
           className={`${appStyles.FillerImage}`}
           src={"https://res.cloudinary.com/dqqpbdz1w/image/upload/v1671772798/Fireplace_b7rn3s.jpg"}
-          alt="Fireplace image by Photo by Stéphane Juban on unsplash
+          alt="Fireplace image by Stéphane Juban on unsplash
           "
         />
       </Col>
