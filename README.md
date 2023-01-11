@@ -131,6 +131,7 @@ The site was deployed through GitHub and Heroku
 
 ### Content
 - Log in/Sign up page image by Stéphane Juban on unsplash
+- Upload and not found images from Code Institute walkthrough project
   
 - Thanks
   - Thanks to my family for their support and patience
