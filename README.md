@@ -1,7 +1,7 @@
 # The Hearth of the Dungeon API
 
 Tabletop games, while always popular, have greatly increased in popularity over the last several years. This is also true of tabeltop role-playing games, such as Dungeons & Dragons, Pathfinder, and a host of others. Libraries, bookstores, cafés, and sometimes bars host game nights, while families and groups of friends will meet wherever they can to play. During the COVID-19 pandemic, people turned to playing their games online using virtual tabletops. The purpose of this site is to enable people to find new groups to play with and for those already in groups to be able to engage in discussion regarding their games. Groups can be created by users and can then be followed. Users can post images and conversation topics to these groups, with commenting and liking available. A group owner can also post event notifications to their group.
-Live demo [_here_](https://notandy82-hearth-api.herokuapp.com/)
+Live demo [_here_](https://notandy82-hearth-of-the-dungeon.herokuapp.com/)
 
 
 ## Table of Contents
