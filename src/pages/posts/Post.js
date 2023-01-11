@@ -39,7 +39,7 @@ const Post = (props) => {
           </Media>
       </Card.Body>
       <Card.Body>
-        {title && <Card.Title className="text-center">{title}</Card.Title>}
+        {title}
         {content && <Card.Text>{content}</Card.Text>}
       </Card.Body>
     </Card>

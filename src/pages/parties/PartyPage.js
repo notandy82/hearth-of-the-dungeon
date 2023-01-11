@@ -21,48 +21,40 @@ function PartyPage() {
   
   const currentUser = useCurrentUser();
   const [partyPosts, setPartyPosts] = useState({ results: [] });
-  
+  const [posts, setPosts] = useState({ results: [] });
   
 
   useEffect(() => {
-    const handleMount = async () => {
+    const fetchData = async () => {
       try {
         const [{ data: party }, {data: partyPosts}] = await Promise.all([
           axiosReq.get(`/parties/${id}`),
           axiosReq.get(`/posts/?parties=${id}`),
         ]);
         setParty({ results: [party] });
+        setPartyPosts({ results: [partyPosts] });
         
-        
+        console.log(partyPosts);
       } catch(err) {
         console.log(err);
       }
     };
     
-    handleMount();
+    fetchData();
   }, [id]);
-
-  
-  
-
-
-
 
   return (
     <Container className={appStyles.Content}>
       <Party {...party.results[0]} setParties={setParty} />
-      <Row className="h-100">
-      
-      <Col lg={3} className="d-none d-lg-block p-0 p-lg-2">
-        
-      </Col>
-      
-      
-    </Row>
-    
-    </Container>
-    
-    
+        <PostCreateForm
+          profile_id={CurrentUserContext.profile_id}         
+          party={id}
+          setPosts={setPosts}
+        />
+        <Post
+          party={id}
+        />
+    </Container>    
   );
 }
 

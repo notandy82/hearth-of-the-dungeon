@@ -53,11 +53,11 @@ function PostCreateForm(props) {
 
     try {
       const {data} = await axiosReq.post('/posts/', formData);
-      history.pushState(`/posts/${data.id}`)
+      history.push(`/parties/${data.id}`)
     } catch (err) {
       console.log(err)
       if (err.response?.status !== 401){
-        setErrors(err.respons?.data)
+        setErrors(err.response?.data)
       }
     }
   };
@@ -92,15 +92,7 @@ function PostCreateForm(props) {
           {message}
         </Alert>
       ))}
-      {/* <Form.Group>
-        <Form.Label>Party</Form.Label>
-        <Form.Control
-          type="text"
-          placeholder={party}
-          readOnly
-          value={party}
-        />
-      </Form.Group> */}
+      
       <div className="d-flex justify-content-center">
         <Button
           className={`${btnStyles.Button}`}
