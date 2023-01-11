@@ -95,10 +95,12 @@ Live demo [_here_](https://notandy82-hearth-api.herokuapp.com/)
 
 ## Development
 - User stories were established to determine the direction of development.
-![Responsive view mockup](assets/images/amiresponsive_nis.png)
-- The site was planned using Balsamiq wireframes.
 
-![Responsive view mockup](assets/images/amiresponsive_nis.png)
+![User stories planning board](assets/hearth_user_stories.png)
+
+- The site was planned using Balsamiq wireframes.
+  - Homepage view
+![Wireframe of homepage](assets/hearth_wireframe_1.png)
 
 
 ## Testing
