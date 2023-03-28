@@ -5,19 +5,7 @@ import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const Post = (props) => {
-  const {
-    id,
-    owner,
-    profile_id,
-    profile_image,
-    title,
-    content,
-    updated_at,
-    partyPage,
-    setPost,
-    party,
-    image,
-  } = props;
+  
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
