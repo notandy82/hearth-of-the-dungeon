@@ -11,6 +11,7 @@ import PostCreateForm from "../posts/PostCreateForm";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Post from "../posts/Post";
+import PostContainer from "../posts/PostContainer";
 
 const PartyPage = (props) => {
   const { id } = useParams();
@@ -46,9 +47,7 @@ const PartyPage = (props) => {
           party={id}
           setPosts={setPosts}
         />
-        <div>
-          
-        </div>
+        <PostContainer />
     </Container>    
   );
 }

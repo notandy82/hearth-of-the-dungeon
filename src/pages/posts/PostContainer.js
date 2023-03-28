@@ -1,8 +1,11 @@
 import React from 'react'
+import Post from './Post'
 
-const PostContainer = () => {
+const PostContainer = (props) => {
   return (
-    <div></div>
+    <div>
+      <Post />
+    </div>
   )
 }
 
