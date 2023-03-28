@@ -12,7 +12,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 import Post from "../posts/Post";
 
-function PartyPage() {
+const PartyPage = (props) => {
   const { id } = useParams();
   const [party, setParty] = useState({ results: [] });
   
@@ -46,9 +46,9 @@ function PartyPage() {
           party={id}
           setPosts={setPosts}
         />
-        <Post
-          party={id}
-        />
+        <div>
+          
+        </div>
     </Container>    
   );
 }

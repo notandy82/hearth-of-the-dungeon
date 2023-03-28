@@ -5,7 +5,19 @@ import Avatar from "../../components/Avatar";
 import { useCurrentUser } from "../../contexts/CurrentUserContext";
 
 const Post = (props) => {
-  
+  const {
+    id,
+    owner,
+    profile_id,
+    profile_image,
+    title,
+    content,
+    updated_at,
+    partyPage,
+    setPost,
+    party,
+    image,
+  } = props;
 
   const currentUser = useCurrentUser();
   const is_owner = currentUser?.username === owner;
@@ -15,7 +27,7 @@ const Post = (props) => {
       <Card.Body>
         <Media className="align-items-center justify-content-between">
           <Avatar src={profile_image} height={55} />
-          {owner}
+          {props.owner}
           {/* <div className="d-flex align-items-center">
               <span>{updated_at}</span>
               {is_owner && postPage && (

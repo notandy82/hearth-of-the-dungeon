@@ -27,18 +27,43 @@ Live demo [_here_](https://notandy82-hearth-of-the-dungeon.herokuapp.com/)
 
 - Site user 
   - As a user I can view a navbar on every page to easily navigate the site.
+    - A navbar is constantly available at the top of the logged in page.
+
   - As a new user I can create an account so that I can access all features for users.
+    - When not logged in, a new user is able to click a button labeled 'Sign up' and create an account allowing access to the site.
+
   - As a user I can sign in to the app to access all functionality for users.
+    - When not logged in, an existing user is able to click a button labeled 'Sign in', enter their credentials, and gain access to the site.
+
   - As a user I can see if I am logged in and have appropriate navigation options.
+    -
+  
   - As a user I can maintain my logged in status so that I can have access to the site's functions for as long as I choose.
+    -
+
   - As a user, I can see other users' avatars so I can easily distinguish one user from another.
+    -
+
   - As a logged in user I can create a party to create a discussion space for a group.
+    - When a user is logged in, a button is present providing a form to allow users to create a new user group.
+
   - As a user I can create a calendar post so that other users in a party can be alerted to evens for my party.
+    -
+
   - As a user I can create a public post so that other users can find my party.
+    -
+
   - As a user I can make posts in my party so that I can create a discussion within the group.
+    -
+
   - As a user I can comment on a user's post so that I can share my thoughts about a post.
+    -
+
   - As a user I can follow a party so that I can see all posts make in the party.
+    -
+
   - As a user I can see a profile page for users so I can see a user's basic information.
+    -
 
 
 ### Existing Features
